@@ -3,3 +3,6 @@
 ### Note: I WILL take this down if the Zorin developers should contact me on that, so don't expect this to stay forever
 
 This script currently covers the **MacOS-Like Layout**, others will be added as I become less lazy (or learn how to implement things better, or others contribute, etc)
+
+
+_**Note that I'm learning how to use bash in scripts through this, so many things can, and likely will be improved as I learn**_
