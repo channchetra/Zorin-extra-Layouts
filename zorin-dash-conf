@@ -1,0 +1,5 @@
+[/]
+apply-custom-theme=true
+click-action='minimize-or-previews'
+dock-position='BOTTOM'
+isolate-workspaces=true
