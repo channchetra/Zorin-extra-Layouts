@@ -9,7 +9,7 @@ This script currently covers the **MacOS-Like Layout**, others will be added as 
 ## How To Use
 Run this:
 ```
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/TGRush/Zorin-extra-Layouts/main/morelayoutsinstall.sh)"
+bash -c "$(wget https://raw.githubusercontent.com/TGRush/Zorin-extra-Layouts/main/morelayoutsinstall.sh -O -)"
 ```
 
 Done.
