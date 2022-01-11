@@ -70,7 +70,7 @@ if [ "$ask" == "Windows 11-Layout" ]; then
 	gnome-extensions enable zorin-menu@zorinos.com
 	curl https://raw.githubusercontent.com/TGRush/Zorin-extra-Layouts/main/11-panel-conf | dconf load /org/gnome/shell/extensions/zorin-taskbar/
 	curl https://raw.githubusercontent.com/TGRush/Zorin-extra-Layouts/main/11-menu-conf | dconf load /org/gnome/shell/extensions/zorin-menu/
-
+fi
 else
 echo -e "${red}Zenity not found or something else went wrong! run sudo apt install zenity first and try again!${reset}"
 exit 0
