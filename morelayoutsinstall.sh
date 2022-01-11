@@ -40,7 +40,7 @@ if [ "$ask" == "Ubuntu-Layout" ]; then
 	echo -e "${red}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
 	sudo apt install gnome-shell-extension-zorin-dash -y
 	echo -e "${green}Gnome will be restarted in 5 seconds...${reset}"
-	bustctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
+	busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
 	echo "waiting 10s..."
 	sleep 10s
 	gnome-extensions disable zorin-hide-activities-move-clock@zorinos.com
