@@ -51,7 +51,6 @@ if [ "$ask" == "Ubuntu-Layout" ]; then
 fi
 
 if [ "$ask" == "Windows Classic-Layout" ]; then
-	echo -e "${red}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
 	echo -e "${red}Note that Gnome won't be restarted for this layout.${reset}"
 	gnome-extensions disable zorin-dash@zorinos.com
 	gnome-extensions disable zorin-hide-activities-move-clock@zorinos.com
@@ -62,7 +61,6 @@ if [ "$ask" == "Windows Classic-Layout" ]; then
 fi
 
 if [ "$ask" == "Windows 11-Layout" ]; then
-	echo -e "${red}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
 	echo -e "${red}Note that Gnome won't be restarted for this layout.${reset}"
 	gnome-extensions disable zorin-dash@zorinos.com
 	gnome-extensions disable zorin-hide-activities-move-clock@zorinos.com
