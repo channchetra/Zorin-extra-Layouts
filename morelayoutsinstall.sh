@@ -20,10 +20,10 @@ reset="\e[0m"
 
 if [ $(ls /usr/bin/zenity) == "/usr/bin/zenity" ]
 then
-export SUDO_ASKPASS=$(zenity --password)
 ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "Ubuntu-Layout" --width=100 --height=300 --hide-header)
 if [ "$ask" == "MacOS-Layout" ]; then
-	sudo -A apt install gnome-shell-extension-zorin-dash gnome-shell-extension-zorin-hide-activities-move-clock -y
+	echo -e "${red}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
+	sudo apt install gnome-shell-extension-zorin-dash gnome-shell-extension-zorin-hide-activities-move-clock -y
 	echo -e "${green}Gnome will be restarted in 5 seconds...${reset}"
 	sleep 5s
 	busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting…")'
