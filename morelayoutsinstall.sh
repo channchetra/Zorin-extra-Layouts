@@ -20,7 +20,7 @@ reset="\e[0m"
 
 if [ $(ls /usr/bin/zenity) == "/usr/bin/zenity" ]
 then
-ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "Ubuntu-Layout" --width=100 --height=300 --hide-header)
+ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "Ubuntu-Layout" "Windows Classic-Layout" --width=100 --height=300 --hide-header)
 if [ "$ask" == "MacOS-Layout" ]; then
 	
 	sudo apt install gnome-shell-extension-zorin-dash gnome-shell-extension-zorin-hide-activities-move-clock -y
@@ -49,7 +49,18 @@ if [ "$ask" == "Ubuntu-Layout" ]; then
 	gnome-extensions enable zorin-dash@zorinos.com
 	curl https://raw.githubusercontent.com/TGRush/Zorin-extra-Layouts/main/ubuntu-zorin-dash-conf | dconf load /org/gnome/shell/extensions/zorin-dash/
 fi
+
+if [ "$ask" == "Windows Classic-Layout" ]; then
+	echo -e "${red}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
+	echo -e "${red}Note that Gnome won't be restarted for this layout.${reset}"
+	gnome-extensions disable zorin-dash@zorinos.com
+	gnome-extensions disable zorin-hide-activities-move-clock@zorinos.com
+	gnome-extensions enable zorin-taskbar@zorinos.com
+	gnome-extensions enable zorin-menu@zorinos.com
+	curl https://raw.githubusercontent.com/TGRush/Zorin-extra-Layouts/main/classic-panel-conf | dconf load /org/gnome/shell/extensions/zorin-dash/ 
+	curl https://raw.githubusercontent.com/TGRush/Zorin-extra-Layouts/main/classic-menu-conf | dconf load /org/gnome/shell/extensions/zorin-menu/
+fi
 else
-echo -e "${red}Zenity not found! run sudo apt install zenity first!${reset}"
+echo -e "${red}Zenity not found or something else went wrong! run sudo apt install zenity first and try again!${reset}"
 exit 0
 fi

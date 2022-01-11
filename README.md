@@ -2,7 +2,9 @@
 ## A script which allows anyone to easily switch between some of Zorin's Pro/Ultimate Layouts on Core editions (GNOME, not Lite/XFCE)
 ### Note: I WILL take this down if the Zorin developers should contact me on that, so don't expect this to stay forever
 
-This script currently covers the **MacOS-Like Layout**, others will be added as I become less lazy
+This script currently covers the **MacOS-Like Layout**, **Ubuntu-Like Layout**, and **Windows Classic-Like Layout** others will be added as I become less lazy
+> PS: only one layout to go!
+
 
 ---
 
@@ -13,3 +15,5 @@ bash -c "$(wget https://raw.githubusercontent.com/TGRush/Zorin-extra-Layouts/mai
 ```
 
 Done.
+
+### PS: You're free to redistribute, modify, and use this script *freely*
