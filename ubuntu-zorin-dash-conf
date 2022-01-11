@@ -1,0 +1,7 @@
+[/]
+apply-custom-theme=false
+click-action='minimize-or-previews'
+dock-fixed=true
+dock-position='LEFT'
+extend-height=true
+isolate-workspaces=true
