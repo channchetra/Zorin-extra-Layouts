@@ -57,7 +57,7 @@ if [ "$ask" == "Windows Classic-Layout" ]; then
 	gnome-extensions disable zorin-hide-activities-move-clock@zorinos.com
 	gnome-extensions enable zorin-taskbar@zorinos.com
 	gnome-extensions enable zorin-menu@zorinos.com
-	curl https://raw.githubusercontent.com/TGRush/Zorin-extra-Layouts/main/classic-panel-conf | dconf load /org/gnome/shell/extensions/zorin-tasbar/ 
+	curl https://raw.githubusercontent.com/TGRush/Zorin-extra-Layouts/main/classic-panel-conf | dconf load /org/gnome/shell/extensions/zorin-taskbar/ 
 	curl https://raw.githubusercontent.com/TGRush/Zorin-extra-Layouts/main/classic-menu-conf | dconf load /org/gnome/shell/extensions/zorin-menu/
 fi
 else
