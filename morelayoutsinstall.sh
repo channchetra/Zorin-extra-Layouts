@@ -17,7 +17,7 @@ uline="\e[4m"
 reset="\e[0m"
 
 if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
-	ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "Ubuntu-Layout" "Windows Classic-Layout" "Windows 11-Layout" --width=100 --height=300 --hide-header)
+	ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "Ubuntu-Layout" "Windows Classic-Layout" "Windows 11-Layout" "Pop-Shell" "Show Info" --width=100 --height=300 --hide-header)
 	if [ "$ask" == "MacOS-Layout" ]; then
 
 		sudo apt install gnome-shell-extension-zorin-dash gnome-shell-extension-zorin-hide-activities-move-clock -y
@@ -67,12 +67,28 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		curl https://raw.githubusercontent.com/TGRush/Zorin-extra-Layouts/main/11-menu-conf | dconf load /org/gnome/shell/extensions/zorin-menu/
 	fi
 
-	if [ "$ask" == "Other OS" ]; then
-		echo -e "${red}this is just a placeholder${reset}"
+	if [ "$ask" == "Pop-Shell (BETA)" ]; then
+		echo -e"${red} heavily in-Beta, might not work as expected${reset}"
+		echo -e "${red}THIS REPLACES GNOME DEFAULT KEYBOARD SHORTCUTS${reset}"
+		read -r -p "Press [Enter] to continue, or [CTRL + C] to cancel."
+		sudo apt install node-typescript -y
+		mkdir -p ~/.popshell
+		git clone https://github.com/pop-os/shell.git ~/.popshell
+		cd ~/.popshell || exit
+		make local-install
+		busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
+		echo -e "${green}Waiting 10 seconds...${reset}"
+		sleep 10s
+		gnome-extensions enable pop-shell@system76.com
+		exit
 	fi
 
-	if [ "$ask" == "Pop-Shell" ]; then
-		echo -e "${red}this is just a placeholder${reset}"
+	if [ "$ask" == "Show Info" ]; then
+		echo -e "${red}${bold}${uline}Zorin-extra-Layouts${reset}"
+		echo -e "${green}A script to install extra layouts and other desktop tweaks on Zorin OS 16 Core${reset}"
+		echo "--------"
+		echo "To use the script, simply run the command from the GitHub page and select your layout, the rest is entirely automated."
+		echo "If you want to fork/modify this product, then be sure to read the license as well!"
 	fi
 else
 
