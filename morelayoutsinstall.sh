@@ -16,8 +16,6 @@ uline="\e[4m"
 # shellcheck disable=SC2034
 reset="\e[0m"
 
-# this is just because Sudo decided to not accept just running zenity for the password prompt in a way that I liked, aka I'm imcompetent as hell
-
 if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 	ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "Ubuntu-Layout" "Windows Classic-Layout" "Windows 11-Layout" --width=100 --height=300 --hide-header)
 	if [ "$ask" == "MacOS-Layout" ]; then
@@ -70,6 +68,10 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 	fi
 
 	if [ "$ask" == "Other OS" ]; then
+		echo -e "${red}this is just a placeholder${reset}"
+	fi
+
+	if [ "$ask" == "Pop-Shell" ]; then
 		echo -e "${red}this is just a placeholder${reset}"
 	fi
 else
