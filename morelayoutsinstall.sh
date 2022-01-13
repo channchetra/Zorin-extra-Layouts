@@ -73,14 +73,12 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		echo -e "${red}THIS REPLACES GNOME DEFAULT KEYBOARD SHORTCUTS${reset}"
 		read -r -p "Press [Enter] to continue, or [CTRL + C] to cancel."
 		sudo apt install node-typescript -y
-		mkdir -p ~/.popshell
-		git clone https://github.com/pop-os/shell.git ~/.popshell
+		mkdir ~/.popshell
 		cd ~/.popshell || exit
+		git clone https://github.com/pop-os/shell.git 
+		cd shell || exit
 		make local-install
-		busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
-		echo -e "${green}Waiting 10 seconds...${reset}"
-		sleep 10s
-		gnome-extensions enable pop-shell@system76.com
+		echo -e "${red}The Keybinds can be reset in settings > keybinds!${reset}"
 		exit
 	fi
 
