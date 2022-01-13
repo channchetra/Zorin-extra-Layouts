@@ -69,7 +69,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 	fi
 
 	if [ "$ask" == "Pop-Shell (BETA)" ]; then
-		echo -e"${red} heavily in-Beta, might not work as expected${reset}"
+		echo -e "${red} heavily in-Beta, might not work as expected${reset}"
 		echo -e "${red}THIS REPLACES GNOME DEFAULT KEYBOARD SHORTCUTS${reset}"
 		read -r -p "Press [Enter] to continue, or [CTRL + C] to cancel."
 		sudo apt install node-typescript -y
