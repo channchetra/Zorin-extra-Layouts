@@ -78,6 +78,9 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		git clone https://github.com/pop-os/shell.git 
 		cd shell || exit
 		make local-install
+		busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
+		sleep 5s
+		gnome-extensions enable pop-shell@system76.com -q
 		echo -e "${red}The Keybinds can be reset in settings > keybinds!${reset}"
 		exit
 	fi
