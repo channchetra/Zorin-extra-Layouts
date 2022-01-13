@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # Ansi color code variables
 # shellcheck disable=SC2034
 red="\e[0;91m"
