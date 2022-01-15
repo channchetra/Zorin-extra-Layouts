@@ -100,6 +100,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		echo "${green}removes GNOME »Window is ready« notifications${reset}"
 		read -r -p "To continue the installation, hit [ENTER], to cancel, hit [CTRL+C]"
 		sudo apt install 
+	fi
 else
 
 	echo -e "${red}Zenity not found or something else went wrong! run sudo apt install zenity first and try again!${reset}"
