@@ -97,7 +97,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 	if [ "$ask" == "Install No Annoyance" ]; then 
 		echo -e "${red}}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
 		echo -e "${green}${uline}No Annoyance${reset}"
-		echo "${green}removes GNOME »Window is ready« notifications${reset}"
+		echo -e "${green}removes GNOME »Window is ready« notifications${reset}"
 		read -r -p "To continue the installation, hit [ENTER], to cancel, hit [CTRL+C]"
 		sudo apt install 
 	fi
