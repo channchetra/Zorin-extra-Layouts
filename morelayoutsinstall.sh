@@ -19,7 +19,7 @@ uline="\e[4m"
 reset="\e[0m"
 
 if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
-	ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "Ubuntu-Layout" "Windows Classic-Layout" "Windows 11-Layout" "Pop-Shell (BETA)" "Install No Annoyance" "Show Info" --width=100 --height=300 --hide-header)
+	ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "Ubuntu-Layout" "Windows Classic-Layout" "Windows 11-Layout" "Pop-Shell (BETA)" "Misc." "Show Info" --width=100 --height=300 --hide-header)
 	if [ "$ask" == "MacOS-Layout" ]; then
 		echo -e "${red}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
 		sudo -B apt install gnome-shell-extension-zorin-dash gnome-shell-extension-zorin-hide-activities-move-clock -y
@@ -94,14 +94,26 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		echo "If you want to fork/modify this product, then be sure to read the license as well!"
 	fi
 
-	if [ "$ask" == "Install No Annoyance" ]; then 
-		echo -e "${red}}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
-		echo -e "${green}${uline}No Annoyance${reset}"
-		echo -e "${green}removes GNOME »Window is ready« notifications${reset}"
-		read -r -p "To continue the installation, hit [ENTER], to cancel, hit [CTRL+C]"
-		sudo -B apt install gnome-shell-extension-no-annoyance
-		busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
-		gnome-extensions enable noannoyance@sindex.com -q
+	if [ "$ask" == "Misc." ]; then ask2=$(zenity --list --title="Installation Options" --column="0" "Install No Annoyance" "Install Tiling Assistant" --width=100 --height=300 --hide-header)
+		if [ "$ask2" == "Install No Annoyance" ]; then 
+			echo -e "${red}}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
+			echo -e "${green}${uline}No Annoyance${reset}"
+			echo -e "${green}removes GNOME »Window is ready« notifications${reset}"
+			read -r -p "To continue the installation, hit [ENTER], to cancel, hit [CTRL+C]"
+			sudo -B apt install gnome-shell-extension-no-annoyance
+			busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
+			sleep 5s
+			gnome-extensions enable noannoyance@sindex.com -q
+		fi
+
+		if [ "$ask2" == "Install Tiling Assistant" ];then
+			echo -e "${green}Downloading Extension...${reset}"
+			wget https://extensions.gnome.org/extension-data/tiling-assistantleleat-on-github.v23.shell-extension.zip
+			unzip tiling-assistantleleat-on-github.v23.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/tiling-assistant@leleat-on-github/
+			busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
+			sleep 5s
+			gnome-extensions enable tiling-assistant@leleat-on-github
+		fi
 	fi
 else
 	echo -e "${red}Zenity not found or something else went wrong! run sudo -B apt install zenity first and try again!${reset}"
