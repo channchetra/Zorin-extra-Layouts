@@ -18,16 +18,23 @@ uline="\e[4m"
 # shellcheck disable=SC2034
 reset="\e[0m"
 
+restart_gnome () {
+	if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
+	echo -e "${red}Wayland won't restart GNOME by default, please logout and enable the extensions yourself using the GNOME Extensions app!"
+	elif [ "$XDG_SESSION_TYPE" == "x11" ]; then
+	echo -e "${green}restarting GNOME...${reset}"
+	busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
+	sleep 5s
+	echo -e "${green}GNOME restarted!${reset}"
+	fi
+}
+
 if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 	ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "Ubuntu-Layout" "Windows Classic-Layout" "Windows 11-Layout" "Pop-Shell (BETA)" "Misc." "Show Info" --width=100 --height=300 --hide-header)
 	if [ "$ask" == "MacOS-Layout" ]; then
 		echo -e "${red}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
 		sudo -B apt install gnome-shell-extension-zorin-dash gnome-shell-extension-zorin-hide-activities-move-clock -y
-		echo -e "${green}Gnome will be restarted in 5 seconds...${reset}"
-		sleep 5s
-		busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting…")'
-		echo "waiting 10s..."
-		sleep 10s
+		restart_gnome
 		gnome-extensions disable zorin-menu@zorinos.com
 		gnome-extensions disable zorin-taskbar@zorinos.com
 		gnome-extensions enable zorin-dash@zorinos.com
@@ -39,9 +46,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		echo -e "${red}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
 		sudo -B apt install gnome-shell-extension-zorin-dash -y
 		echo -e "${green}Gnome will be restarted in 5 seconds...${reset}"
-		busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
-		echo "waiting 10s..."
-		sleep 10s
+		restart_gnome
 		gnome-extensions disable zorin-hide-activities-move-clock@zorinos.com
 		gnome-extensions disable zorin-menu@zorinos.com
 		gnome-extensions disable zorin-taskbar@zorinos.com
@@ -79,8 +84,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		git clone https://github.com/pop-os/shell.git 
 		cd shell || exit
 		make local-install
-		busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
-		sleep 5s
+		restart_gnome
 		gnome-extensions enable pop-shell@system76.com -q
 		echo -e "${red}The Keybinds can be reset in settings > keybinds!${reset}"
 		exit
@@ -101,8 +105,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 			echo -e "${green}removes GNOME »Window is ready« notifications${reset}"
 			read -r -p "To continue the installation, hit [ENTER], to cancel, hit [CTRL+C]"
 			sudo -B apt install gnome-shell-extension-no-annoyance
-			busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
-			sleep 5s
+			restart_gnome
 			gnome-extensions enable noannoyance@sindex.com -q
 		fi
 
@@ -110,12 +113,11 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 			echo -e "${green}Downloading Extension...${reset}"
 			wget https://extensions.gnome.org/extension-data/tiling-assistantleleat-on-github.v23.shell-extension.zip
 			unzip tiling-assistantleleat-on-github.v23.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/tiling-assistant@leleat-on-github/
-			busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
-			sleep 5s
+			restart_gnome
 			gnome-extensions enable tiling-assistant@leleat-on-github
 		fi
 	fi
 else
-	echo -e "${red}Zenity not found or something else went wrong! run sudo -B apt install zenity first and try again!${reset}"
+	echo -e "${red}Zenity not found or something else went wrong! run sudo apt install zenity first and try again!${reset}"
 	exit 0
 fi
