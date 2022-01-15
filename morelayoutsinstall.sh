@@ -21,6 +21,7 @@ reset="\e[0m"
 if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 	ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "Ubuntu-Layout" "Windows Classic-Layout" "Windows 11-Layout" "Pop-Shell (BETA)" "Show Info" --width=100 --height=300 --hide-header)
 	if [ "$ask" == "MacOS-Layout" ]; then
+		echo -e "${red}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
 		sudo apt install gnome-shell-extension-zorin-dash gnome-shell-extension-zorin-hide-activities-move-clock -y
 		echo -e "${green}Gnome will be restarted in 5 seconds...${reset}"
 		sleep 5s
@@ -87,7 +88,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 
 	if [ "$ask" == "Show Info" ]; then
 		echo -e "${red}${bold}${uline}Zorin-extra-Layouts${reset}"
-		echo -e "${green}A script to install extra layouts and other desktop tweaks on Zorin OS 16 Core${reset}"
+		echo -e "${green}${uline}A script to install extra layouts and other desktop tweaks on Zorin OS 16 Core${reset}"
 		echo "--------"
 		echo "To use the script, simply run the command from the GitHub page and select your layout, the rest is entirely automated."
 		echo "If you want to fork/modify this product, then be sure to read the license as well!"
