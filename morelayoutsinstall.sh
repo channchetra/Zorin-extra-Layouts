@@ -100,6 +100,8 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		echo -e "${green}removes GNOME »Window is ready« notifications${reset}"
 		read -r -p "To continue the installation, hit [ENTER], to cancel, hit [CTRL+C]"
 		sudo apt install gnome-shell-extension-no-annoyance
+		busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
+		gnome-extensions enable noannoyance@sindex.com -q
 	fi
 else
 
