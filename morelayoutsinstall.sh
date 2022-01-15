@@ -93,6 +93,13 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		echo "To use the script, simply run the command from the GitHub page and select your layout, the rest is entirely automated."
 		echo "If you want to fork/modify this product, then be sure to read the license as well!"
 	fi
+
+	if [ "$ask" == "Install No Annoyance" ]; then 
+		echo -e "${red}}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
+		echo -e "${green}${uline}No Annoyance${reset}"
+		echo "${green}removes GNOME »Window is ready« notifications${reset}"
+		read -r -p "To continue the installation, hit [ENTER], to cancel, hit [CTRL+C]"
+		sudo apt install 
 else
 
 	echo -e "${red}Zenity not found or something else went wrong! run sudo apt install zenity first and try again!${reset}"
