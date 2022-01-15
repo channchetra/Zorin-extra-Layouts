@@ -22,7 +22,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 	ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "Ubuntu-Layout" "Windows Classic-Layout" "Windows 11-Layout" "Pop-Shell (BETA)" "Install No Annoyance" "Show Info" --width=100 --height=300 --hide-header)
 	if [ "$ask" == "MacOS-Layout" ]; then
 		echo -e "${red}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
-		sudo apt install gnome-shell-extension-zorin-dash gnome-shell-extension-zorin-hide-activities-move-clock -y
+		sudo -B apt install gnome-shell-extension-zorin-dash gnome-shell-extension-zorin-hide-activities-move-clock -y
 		echo -e "${green}Gnome will be restarted in 5 seconds...${reset}"
 		sleep 5s
 		busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting…")'
@@ -37,7 +37,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 
 	if [ "$ask" == "Ubuntu-Layout" ]; then
 		echo -e "${red}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
-		sudo apt install gnome-shell-extension-zorin-dash -y
+		sudo -B apt install gnome-shell-extension-zorin-dash -y
 		echo -e "${green}Gnome will be restarted in 5 seconds...${reset}"
 		busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
 		echo "waiting 10s..."
@@ -73,7 +73,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		echo -e "${red} heavily in-Beta, might not work as expected${reset}"
 		echo -e "${red}THIS REPLACES GNOME DEFAULT KEYBOARD SHORTCUTS${reset}"
 		read -r -p "Press [Enter] to continue, or [CTRL + C] to cancel."
-		sudo apt install node-typescript -y
+		sudo -B apt install node-typescript -y
 		mkdir ~/.popshell
 		cd ~/.popshell || exit
 		git clone https://github.com/pop-os/shell.git 
@@ -99,12 +99,11 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		echo -e "${green}${uline}No Annoyance${reset}"
 		echo -e "${green}removes GNOME »Window is ready« notifications${reset}"
 		read -r -p "To continue the installation, hit [ENTER], to cancel, hit [CTRL+C]"
-		sudo apt install gnome-shell-extension-no-annoyance
+		sudo -B apt install gnome-shell-extension-no-annoyance
 		busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Restarting...")'
 		gnome-extensions enable noannoyance@sindex.com -q
 	fi
 else
-
-	echo -e "${red}Zenity not found or something else went wrong! run sudo apt install zenity first and try again!${reset}"
+	echo -e "${red}Zenity not found or something else went wrong! run sudo -B apt install zenity first and try again!${reset}"
 	exit 0
 fi
