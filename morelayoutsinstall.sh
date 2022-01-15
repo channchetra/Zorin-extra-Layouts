@@ -19,7 +19,7 @@ uline="\e[4m"
 reset="\e[0m"
 
 if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
-	ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "Ubuntu-Layout" "Windows Classic-Layout" "Windows 11-Layout" "Pop-Shell (BETA)" "Show Info" --width=100 --height=300 --hide-header)
+	ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "Ubuntu-Layout" "Windows Classic-Layout" "Windows 11-Layout" "Pop-Shell (BETA)" "Install No Annoyance" "Show Info" --width=100 --height=300 --hide-header)
 	if [ "$ask" == "MacOS-Layout" ]; then
 		echo -e "${red}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
 		sudo apt install gnome-shell-extension-zorin-dash gnome-shell-extension-zorin-hide-activities-move-clock -y
