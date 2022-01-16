@@ -98,7 +98,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		echo "If you want to fork/modify this product, then be sure to read the license as well!"
 	fi
 
-	if [ "$ask" == "Misc." ]; then ask2=$(zenity --list --title="Installation Options" --column="0" "Install No Annoyance" "Install Tiling Assistant" --width=100 --height=300 --hide-header)
+	if [ "$ask" == "Misc." ]; then ask2=$(zenity --list --title="Installation Options" --column="0" "Install No Annoyance" "Install Tiling Assistant" "Install Caffeine" --width=100 --height=300 --hide-header)
 		if [ "$ask2" == "Install No Annoyance" ]; then 
 			echo -e "${red}}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
 			echo -e "${green}${uline}No Annoyance${reset}"
@@ -115,8 +115,17 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 			unzip tiling-assistantleleat-on-github.v23.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/tiling-assistant@leleat-on-github/
 			restart_gnome
 			gnome-extensions enable tiling-assistant@leleat-on-github
+			echo -e "${green}all done!${reset}"
 		fi
-	fi
+
+		if [ "$ask2" == "Install Caffeine" ]; then
+			echo -e "${green}Downloading extension...§{reset}"
+			wget https://extensions.gnome.org/extension-data/caffeinepatapon.info.v37.shell-extension.zip
+			unzip caffeinepatapon.info.v37.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/caffeine@patapon.info
+			restart_gnome
+			gnome-extensions enable caffeine@patapon.info
+			echo -e "${green}all done!${reset}"
+		fi
 else
 	echo -e "${red}Zenity not found or something else went wrong! run sudo apt install zenity first and try again!${reset}"
 	exit 0
