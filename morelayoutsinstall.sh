@@ -130,3 +130,4 @@ else
 	echo -e "${red}Zenity not found or something else went wrong! run sudo apt install zenity first and try again!${reset}"
 	exit 0
 fi
+fi
