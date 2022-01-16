@@ -119,7 +119,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		fi
 
 		if [ "$ask2" == "Install Caffeine" ]; then
-			echo -e "${green}Downloading extension...§{reset}"
+			echo -e "${green}Downloading extension...${reset}"
 			wget https://extensions.gnome.org/extension-data/caffeinepatapon.info.v37.shell-extension.zip
 			unzip caffeinepatapon.info.v37.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/caffeine@patapon.info
 			restart_gnome
