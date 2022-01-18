@@ -126,6 +126,14 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 			gnome-extensions enable caffeine@patapon.info
 			echo -e "${green}all done!${reset}"
 		fi
+
+		if [ "$ask" == "Install Just Perfection" ]; then
+			echo -e "${green}Downloading extension..."
+			wget https://extensions.gnome.org/extension-data/just-perfection-desktopjust-perfection.v16.shell-extension.zip
+			unzip just-perfection-desktopjust-perfection.v16.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/just-perfection-desktop@just-perfection
+			restart_gnome
+			gnome-extensions enable just-perfection-desktop@just-perfection
+			echo -e "${green}all done!${reset}"
 else
 	echo -e "${red}Zenity not found or something else went wrong! run sudo apt install zenity first and try again!${reset}"
 	exit 0
