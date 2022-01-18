@@ -111,4 +111,9 @@ if [ "" != "$ask" ]; then
 		gnome-extensions enable caffeine@patapon.info
 		echo -e "${green}all done!${reset}"
 	fi
+else
+echo "NO VARIABLE PROVIDED!"
+echo "AVAILABLE VARIABLES:"
+echo "win11, macos, ubuntu, winclassic, popshell, noannoyance, tilingassistant, caffeine"
+exit 0
 fi
