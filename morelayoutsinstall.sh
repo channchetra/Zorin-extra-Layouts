@@ -127,7 +127,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 			echo -e "${green}all done!${reset}"
 		fi
 
-		if [ "$ask" == "Install Just Perfection" ]; then
+		if [ "$ask2" == "Install Just Perfection" ]; then
 			echo -e "${green}Downloading extension...${reset}"
 			wget https://extensions.gnome.org/extension-data/just-perfection-desktopjust-perfection.v16.shell-extension.zip
 			unzip just-perfection-desktopjust-perfection.v16.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/just-perfection-desktop@just-perfection/
@@ -136,7 +136,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 			echo -e "${green}all done!${reset}"
 		fi
 
-		if [ "$ask" == "Install BlurMyShell" ]; then
+		if [ "$ask2" == "Install BlurMyShell" ]; then
 			echo -e "${green}Downloading extension...${reset}"
 			wget https://extensions.gnome.org/extension-data/blur-my-shellaunetx.v22.shell-extension.zip
 			unzip blur-my-shellaunetx.v22.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/blur-my-shell@aunetx/
