@@ -98,12 +98,9 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		echo "If you want to fork/modify this product, then be sure to read the license as well!"
 	fi
 
-	if [ "$ask" == "Misc." ]; then ask2=$(zenity --list --title="Installation Options" --column="0" "Install No Annoyance" "Install Tiling Assistant" "Install Caffeine" "Install BlurMyShell" "Install Just Perfection"--width=100 --height=300 --hide-header)
+	if [ "$ask" == "Misc." ]; then ask2=$(zenity --list --title="Installation Options" --column="0" "Install No Annoyance" "Install Tiling Assistant" "Install Caffeine" "Install BlurMyShell" "Install Just Perfection" "Unity Layout (BETA)" --width=100 --height=300 --hide-header)
 		if [ "$ask2" == "Install No Annoyance" ]; then 
-			echo -e "${red}}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
-			echo -e "${green}${uline}No Annoyance${reset}"
-			echo -e "${green}removes GNOME »Window is ready« notifications${reset}"
-			read -r -p "To continue the installation, hit [ENTER], to cancel, hit [CTRL+C]"
+			echo -e "${green}Downloading extension...${reset}"
 			sudo -B apt install gnome-shell-extension-no-annoyance
 			restart_gnome
 			gnome-extensions enable noannoyance@sindex.com -q
@@ -143,6 +140,17 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 			restart_gnome
 			gnome-extensions enable blur-my-shell@aunetx
 			echo -e "${green}all done!${reset}"
+		fi
+
+		if [ "$ask2" == "Unity Layout (BETA)" ]; then
+			echo -e "${green}Downloading extension...${reset}"
+			wget https://extensions.gnome.org/extension-data/unitehardpixel.eu.v59.shell-extension.zip
+			unzip unitehardpixel.eu.v59.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/unite@hardpixel.eu/
+			restart_gnome
+			gnome-extensions disable zorin-dash@zorinos.com
+			gnome-extensions disable zorin-menu@zorinos.com
+			gnome-extensions disable zorin-taskbar@zorinos.com
+			gnome-extensions enable unite@hardpixel.eu
 		fi
 else
 	echo -e "${red}Zenity not found or something else went wrong! run sudo apt install zenity first and try again!${reset}"
