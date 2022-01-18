@@ -98,7 +98,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		echo "If you want to fork/modify this product, then be sure to read the license as well!"
 	fi
 
-	if [ "$ask" == "Misc." ]; then ask2=$(zenity --list --title="Installation Options" --column="0" "Install No Annoyance" "Install Tiling Assistant" "Install Caffeine" --width=100 --height=300 --hide-header)
+	if [ "$ask" == "Misc." ]; then ask2=$(zenity --list --title="Installation Options" --column="0" "Install No Annoyance" "Install Tiling Assistant" "Install Caffeine" "Install BlurMyShell" "Install Just Perfection"--width=100 --height=300 --hide-header)
 		if [ "$ask2" == "Install No Annoyance" ]; then 
 			echo -e "${red}}Make sure to fill in your password in the Terminal! there is no popup.${reset}"
 			echo -e "${green}${uline}No Annoyance${reset}"
@@ -121,18 +121,27 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 		if [ "$ask2" == "Install Caffeine" ]; then
 			echo -e "${green}Downloading extension...${reset}"
 			wget https://extensions.gnome.org/extension-data/caffeinepatapon.info.v37.shell-extension.zip
-			unzip caffeinepatapon.info.v37.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/caffeine@patapon.info
+			unzip caffeinepatapon.info.v37.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/caffeine@patapon.info/
 			restart_gnome
 			gnome-extensions enable caffeine@patapon.info
 			echo -e "${green}all done!${reset}"
 		fi
 
 		if [ "$ask" == "Install Just Perfection" ]; then
-			echo -e "${green}Downloading extension..."
+			echo -e "${green}Downloading extension...${reset}"
 			wget https://extensions.gnome.org/extension-data/just-perfection-desktopjust-perfection.v16.shell-extension.zip
-			unzip just-perfection-desktopjust-perfection.v16.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/just-perfection-desktop@just-perfection
+			unzip just-perfection-desktopjust-perfection.v16.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/just-perfection-desktop@just-perfection/
 			restart_gnome
 			gnome-extensions enable just-perfection-desktop@just-perfection
+			echo -e "${green}all done!${reset}"
+		fi
+
+		if [ "$ask" == "Install BlurMyShell" ]; then
+			echo -e "${green}Downloading extension...${reset}"
+			wget https://extensions.gnome.org/extension-data/blur-my-shellaunetx.v22.shell-extension.zip
+			unzip blur-my-shellaunetx.v22.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/blur-my-shell@aunetx/
+			restart_gnome
+			gnome-extensions enable blur-my-shell@aunetx
 			echo -e "${green}all done!${reset}"
 		fi
 else
