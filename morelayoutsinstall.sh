@@ -151,6 +151,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 			gnome-extensions disable zorin-menu@zorinos.com
 			gnome-extensions disable zorin-taskbar@zorinos.com
 			gnome-extensions enable unite@hardpixel.eu
+			echo -e "${green}all done!${reset}"
 		fi
 else
 	echo -e "${red}Zenity not found or something else went wrong! run sudo apt install zenity first and try again!${reset}"
