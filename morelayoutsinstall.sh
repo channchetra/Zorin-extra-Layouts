@@ -134,6 +134,7 @@ if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
 			restart_gnome
 			gnome-extensions enable just-perfection-desktop@just-perfection
 			echo -e "${green}all done!${reset}"
+		fi
 else
 	echo -e "${red}Zenity not found or something else went wrong! run sudo apt install zenity first and try again!${reset}"
 	exit 0
