@@ -104,16 +104,47 @@ if [ "" != "$ask" ]; then
 	fi
 
 	if [ "$ask2" == "caffeine" ]; then
-		
+		echo -e "${green}Downloading Extension...${reset}"
 		wget https://extensions.gnome.org/extension-data/caffeinepatapon.info.v37.shell-extension.zip
 		unzip caffeinepatapon.info.v37.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/caffeine@patapon.info
 		restart_gnome
 		gnome-extensions enable caffeine@patapon.info
 		echo -e "${green}all done!${reset}"
 	fi
+
+	if [ "$ask2" == "blurmyshell" ]; then
+		echo -e "${green}Downloading extension...${reset}"
+		wget https://extensions.gnome.org/extension-data/blur-my-shellaunetx.v22.shell-extension.zip
+		unzip blur-my-shellaunetx.v22.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/blur-my-shell@aunetx/
+		restart_gnome
+		gnome-extensions enable blur-my-shell@aunetx
+		echo -e "${green}all done!${reset}"
+	fi
+
+	if [ "$ask" == "unity" ];then 
+		echo -e "${green}Downloading extension...${reset}"
+		wget https://extensions.gnome.org/extension-data/unitehardpixel.eu.v59.shell-extension.zip
+		unzip unitehardpixel.eu.v59.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/unite@hardpixel.eu/
+		restart_gnome
+		gnome-extensions disable zorin-dash@zorinos.com
+		gnome-extensions disable zorin-menu@zorinos.com
+		gnome-extensions disable zorin-taskbar@zorinos.com
+		gnome-extensions enable unite@hardpixel.eu
+		echo -e "${green}all done!${reset}"
+	fi
+
+	if [ "$ask" == "justperfection" ]; then
+		echo -e "${green}Downloading extension...${reset}"
+		wget https://extensions.gnome.org/extension-data/just-perfection-desktopjust-perfection.v16.shell-extension.zip
+		unzip just-perfection-desktopjust-perfection.v16.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/just-perfection-desktop@just-perfection/
+		restart_gnome
+		gnome-extensions enable just-perfection-desktop@just-perfection
+		echo -e "${green}all done!${reset}"
+	fi
 else
-echo "NO VARIABLE PROVIDED!"
+echo -e "${red}NO VARIABLE PROVIDED!${reset}"
 echo "AVAILABLE VARIABLES:"
 echo "win11, macos, ubuntu, winclassic, popshell, noannoyance, tilingassistant, caffeine"
+echo -e "${green}Use them like this:${reset} ask=win11 $0"
 exit 0
 fi
