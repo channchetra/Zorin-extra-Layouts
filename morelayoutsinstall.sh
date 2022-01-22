@@ -264,7 +264,7 @@ if [ -n "$1" ]; then
    esac
    shift
 else
-   bigtext
+   gui
 fi
 
 #	if [ "$(ls /usr/bin/zenity)" == "/usr/bin/zenity" ]; then
