@@ -16,6 +16,7 @@ bash -c "$(wget https://raw.githubusercontent.com/TGRush/Zorin-extra-Layouts/mai
 CLI:
 ```
 git clone --depth=1 https://github.com/TGRush/Zorin-extra-Layouts.git && cd Zorin-extra-layouts
+
 ./morelayoutsinstall.sh -h
 ```
 
