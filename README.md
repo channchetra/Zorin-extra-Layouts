@@ -8,12 +8,17 @@ This script currently covers **all official Zorin 16 Pro Layouts**
 > ### **NOTE:** I WILL take this down if the Zorin developers should contact me on that, so don't expect this to stay forever
 
 ## How To Use
-Run this:
+Basic use:
 ```
 bash -c "$(wget https://raw.githubusercontent.com/TGRush/Zorin-extra-Layouts/main/morelayoutsinstall.sh -O -)"
 ```
 
-Done.
+CLI:
+```
+git clone --depth=1 https://github.com/TGRush/Zorin-extra-Layouts.git && cd Zorin-extra-layouts
+
+./morelayoutsinstall.sh -h
+```
 
 ## License:
 ```
