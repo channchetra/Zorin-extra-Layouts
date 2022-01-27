@@ -168,6 +168,14 @@ unity() {
 	echo -e "${green}all done!${reset}"
 }
 
+btquickconnect() {
+	wget https://extensions.gnome.org/extension-data/bluetooth-quick-connectbjarosze.gmail.com.v16.shell-extension.zip
+	unzip bluetooth-quick-connectbjarosze.gmail.com.v16.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/bluetooth-quick-connect@bjarosze.gmail.com/
+	restart_gnome
+	gnome-extensions enable bluetooth-quick-connect@bjarosze.gmail.com
+	echo -e "${green}all done!${reset}"
+}
+
 gui () {
 ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "Ubuntu-Layout" "Windows Classic-Layout" "Windows 11-Layout" "Pop-Shell (BETA)" "Misc." --width=100 --height=300 --hide-header)
 	if [ "$ask" == "MacOS-Layout" ]; then
@@ -194,7 +202,7 @@ ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "
 		popshell
 	fi
 
-	if [ "$ask" == "Misc." ]; then ask2=$(zenity --list --title="Installation Options" --column="0" "Install No Annoyance" "Install Tiling Assistant" "Install Caffeine" "Install BlurMyShell" "Install Just Perfection" "Unity Layout (BETA)" --width=100 --height=300 --hide-header)
+	if [ "$ask" == "Misc." ]; then ask2=$(zenity --list --title="Installation Options" --column="0" "Install No Annoyance" "Install Tiling Assistant" "Install Caffeine" "Install BlurMyShell" "Install Just Perfection" "Unity Layout (BETA)" "Install Bluetooth Quick Connect" --width=100 --height=300 --hide-header)
 		if [ "$ask2" == "Install No Annoyance" ]; then 
 			noannoyance
 		fi
@@ -217,6 +225,10 @@ ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "
 
 		if [ "$ask2" == "Unity Layout (BETA)" ]; then
 			unity
+		fi
+
+		if [ "$ask2" == "Install Bluetooth Quick Connect" ]; then
+			btquickconnect
 		fi
 	fi
 }
