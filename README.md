@@ -29,6 +29,7 @@ When contributing (or trying to), make sure that you've tested your changes befo
 - changing dconf where unnecessary
 - custom extension downloading (already available through extensions.gnome.org on Firefox/Chromium and alike)
 - unrevertible changes
+- breaking changes (for example PPAs which prevent proper updating)
 
 ## License:
 ```
