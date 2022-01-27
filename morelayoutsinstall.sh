@@ -189,12 +189,10 @@ ask=$(zenity --list --title="Installation Options" --column="0" "MacOS-Layout" "
 	fi
 
 	if [ "$ask" == "Windows Classic-Layout" ]; then
-		echo -e "${red}Note that Gnome won't be restarted for this layout.${reset}"
 		winclassic
 	fi
 
 	if [ "$ask" == "Windows 11-Layout" ]; then
-		echo -e "${red}Note that Gnome won't be restarted for this layout.${reset}"
 		win11
 	fi
 
