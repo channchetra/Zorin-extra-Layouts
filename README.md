@@ -20,6 +20,16 @@ git clone --depth=1 https://github.com/TGRush/Zorin-extra-Layouts.git && cd Zori
 ./morelayoutsinstall.sh -h
 ```
 
+## Contributing:
+When contributing (or trying to), make sure that you've tested your changes before you make a pull request, and that you relatively know how to use bash and some command line tools (wget for example, unzip, the gnome-extensions cli tool, etc) and that the change you're trying to pull request actually fits the project 
+
+#### Changes which are considered NOT fitting the project:
+- untested extensions
+- outdated extensions
+- changing dconf where unnecessary
+- custom extension downloading (already available through extensions.gnome.org on Firefox/Chromium and alike)
+- unrevertible changes
+
 ## License:
 ```
 Copyright (c) 2022 Simon "TGRush" Müller
