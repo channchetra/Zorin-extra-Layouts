@@ -101,7 +101,7 @@ popshell() {
 	echo -e "${red} heavily in-Beta, might not work as expected${reset}"
 	echo -e "${red}THIS REPLACES GNOME DEFAULT KEYBOARD SHORTCUTS${reset}"
 	read -r -p "Press [Enter] to continue, or [CTRL + C] to cancel."
-	sudo apt install node-typescript -y
+	sudo apt install git node-typescript -y
 	mkdir ~/.popshell
 	cd ~/.popshell || exit
 	git clone https://github.com/pop-os/shell.git 
